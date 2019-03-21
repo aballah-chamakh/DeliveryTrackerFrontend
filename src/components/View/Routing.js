@@ -8,6 +8,8 @@ import VehicleList from '../Vehicles/VehicleList' ;
 import DriverList from '../Drivers/DriverList' ;
 import Map from '../Map/Map'
 import Login from '../Authentication/Login' ;
+import CreateVehicle from '../Vehicles/CreateVehicle' ;
+import CreateDriver from '../Drivers/CreateDriver' ;
 
 class Routing extends React.Component {
   render(){
@@ -17,7 +19,10 @@ class Routing extends React.Component {
       <DeliveryCompanyNavbar/> : <Navbar />}
       <div class='container'>
       <Route path='/login/' component={Login}  />
-      <Route path='/vehicles/' component={VehicleList} />
+      <Route path='/vehicles/' exact component={VehicleList} />
+      <Route path='/vehicle/create/' component={CreateVehicle} />
+      <Route path='/vehicle/:id/update/' render={()=><CreateVehicle mode='update' />} />
+      <Route path='/driver/create/' component={CreateDriver} />
       <Route path='/drivers/' component={DriverList} />
       <Route path='/map/' component={Map} />
       </div>
